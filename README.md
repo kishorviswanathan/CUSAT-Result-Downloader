@@ -1,4 +1,4 @@
-# CUSAT-Result-Downloader
+# CUSAT Result Downloader
 A python script to download exam results of students under the CUSAT and writing it to a tab seperated text file.
 
 ## How to use
