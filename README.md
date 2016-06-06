@@ -4,7 +4,7 @@ A python script to download exam results of students under the CUSAT and writing
 ## How to use
 1. Go to [CUSAT website](http://exam.cusat.ac.in/)
 2. Check the result of the first student.
-3. Then run the script in python console
+3. Then run the script ( Python 2.x )
 4. Input the requested details from the website
 5. Input starting Reg. No and Last Reg. No
 6. Wait for the script to complete.
