@@ -76,7 +76,7 @@ url = "http://exam.cusat.ac.in/erp5/cusat/CUSAT-RESULT/Result_Declaration/displa
 
 
 #Printing headings
-print "\n\n\nReg. No".ljust(11) + "Name".ljust(30) + "Semester".ljust(15) + "Course".ljust(15) + "Classification"
+print "\n\n\n"+"Reg. No".ljust(11) + "Name".ljust(30) + "Semester".ljust(15) + "Course".ljust(15) + "Classification"
 print "-"*100 + "\n"
 
 while(i<=last):
