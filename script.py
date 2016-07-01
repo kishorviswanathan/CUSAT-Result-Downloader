@@ -47,6 +47,7 @@ url = "http://exam.cusat.ac.in/erp5/cusat/CUSAT-RESULT/Result_Declaration/displa
             
 print "Downloading...\n\n"
 while(i<=last):
+    try:
         u = urllib2.urlopen(url+str(i))
         #Complete HTML
         text = u.read()
@@ -86,19 +87,24 @@ while(i<=last):
             if (j == 1):
                 name = clmn[1]
             j += 1
+        if(name == "<b>Subject Name</b>"):
+            print "Fetched : " + str(i) + " - Result unavailable"
+            i += 1
+            continue
         if ((gpa != "") and (float(gpa) > 0)):
-            status += "Passed Sem"
+            status += "[Sem : Passed"
         else:
-            status += "Failed Sem"
+            status += "[Sem : Failed"
         if ((tgpa != "") and (float(tgpa) > 0)):
-            status += ", Passed Course"
+            status += " | Course : Passed]"
         else:
-            status += ", Failed Course"
-        print "Fetched : " + str(i) + " - " + name + " : " + status
+            status += " | Course : Failed]"
+        print "Fetched : " + str(i) + " - " + status +" - "+ name
         #Completely fetched data
         result  += data+total+'\t'+gpa+"\t"+tgpa+"\t"+cls+"\n"
-    
-        i += 1
+    except Exception,e:
+        print e
+    i += 1
 
 #Writing result to file
 with open("Result.txt", "w") as myfile:
