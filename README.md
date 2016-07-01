@@ -8,8 +8,7 @@ A python script to download exam results of students under the CUSAT and writing
 4. Input the requested details from the website
 5. Input starting Reg. No and Last Reg. No
 6. Wait for the script to complete.
-7. The result will be saved in a text file named Result.txt in the same folder as that of script.
-8. Copy it to a Excel sheet if needed.
+7. The result will be saved in a xls file named {Name}.xls in the same folder as that of script, where {name} is the name you have given.
 
 
 ## Rules for use
