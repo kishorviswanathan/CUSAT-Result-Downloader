@@ -47,7 +47,6 @@ url = "http://exam.cusat.ac.in/erp5/cusat/CUSAT-RESULT/Result_Declaration/displa
             
 print "Downloading...\n\n"
 while(i<=last):
-    try:
         u = urllib2.urlopen(url+str(i))
         #Complete HTML
         text = u.read()
@@ -70,13 +69,16 @@ while(i<=last):
         data = data.replace("\tPASSED",'')
         data = data.replace("\tFAILED",'')
         #Getting total and GPA
-        data = data.replace("<b>Subject Code</b>	<b>Subject Name</b>	<th>Marks (Grade)</th><th>Result</th>",'')
+        data = data.replace("<b>Subject Code</b>    <b>Subject Name</b> <th>Marks (Grade)</th><th>Result</th>",'')
         total = find_between(text,'Total :','<br>')
-        gpa = find_between(text,'GPA   :','<br>')
+        gpa = find_between(text,'GPA   :  ','<br>')
+        tgpa = find_between(text,'<b>CGPA&nbsp;:&nbsp;','</b><br>')
+        cls = find_between(text,"<b>Classification&nbsp;:&nbsp;","</b><br>")
         clmn = data.split('\t')
         name = ""
         j = 0
         data = ""
+        status = ""
         #Removing subject name
         while(j < len(clmn)):
             if ((j == 0) or (j%3 != 0)):
@@ -84,12 +86,19 @@ while(i<=last):
             if (j == 1):
                 name = clmn[1]
             j += 1
-        print "Fetched : " + str(i) + " - " + name
+        if ((gpa != "") and (float(gpa) > 0)):
+            status += "Passed Sem"
+        else:
+            status += "Failed Sem"
+        if ((tgpa != "") and (float(tgpa) > 0)):
+            status += ", Passed Course"
+        else:
+            status += ", Failed Course"
+        print "Fetched : " + str(i) + " - " + name + " : " + status
         #Completely fetched data
-        result  += data+total+'\t'+gpa+"\n"
-    except:
-        print "Error"
-    i += 1
+        result  += data+total+'\t'+gpa+"\t"+tgpa+"\t"+cls+"\n"
+    
+        i += 1
 
 #Writing result to file
 with open("Result.txt", "w") as myfile:
