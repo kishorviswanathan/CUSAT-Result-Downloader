@@ -81,7 +81,7 @@ print "-"*100 + "\n"
 
 while(i<=last):
     try:
-        u = urllib2.urlopen(url+str(i))
+        u = urllib2.urlopen(url+str(i),timeout = 1)
 
         #Complete HTML
         text = u.read()
