@@ -13,10 +13,7 @@ A python script to download exam results of students under the CUSAT and writing
 
 ## Rules for use
 1. Should be used only by college authorities or officials like College Placement Cell.
-2. No personal use.
-3. Do not upload the script anywhere else.
-4. If you are sharing, give link to this repository.
-5. The script should not be modified in any manner.
+2. Not for personal use.
 
 
 ## Contact
